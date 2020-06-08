@@ -1,5 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const fetch =  require('node-fetch');
+
+let url = "http://api.shipping.esoftplay.com/waybill/CGK2H03789568816/jne"
+
+let settings = { method: "Get" };
+
+fetch(url, settings)
+    .then(res => res.json())
+    .then((json) => {
+        console.log(json)
+    });
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
