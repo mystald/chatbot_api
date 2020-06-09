@@ -20,7 +20,7 @@ router.get('/cekresi', (req, res, next) => {
 
             var buttonArr = [];
 
-            console.log(chat);
+            //console.log(chat);
             for(var index in data){
                 val = data[index];
                 var content = {};
@@ -30,7 +30,7 @@ router.get('/cekresi', (req, res, next) => {
                 content["variable"] = {
                     kurir: val.slug
                 };
-                console.log(content);
+                //console.log(content);
                 buttonArr.push(content);
             };
             chat['chats'] = [{
@@ -38,7 +38,7 @@ router.get('/cekresi', (req, res, next) => {
                 buttons: buttonArr,
                 type: "button"
             }];
-            console.log(chat);
+            //console.log(chat);
             res.status(200).json(chat);
         };
     });
