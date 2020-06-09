@@ -22,7 +22,10 @@ router.get('/', (req, res, next) => {
         message: 'products get work',
         chats: [
             {
-                text: data.result.summary,
+                text: "Courier : "+data.result.summary.courier_name+"\nResi : "+data.result.summary.waybill_number+
+                "\nShipper : "+data.result.summary.shipper_name+"\nReceiver : "+data.result.summary.receiver_name+
+                "\nOrigin : "+data.result.summary.origin+"\nDestination"+data.result.summary.destination+
+                "\nStatus : "+data.result.summary.status,
                 type: "text"
             }
         ]
