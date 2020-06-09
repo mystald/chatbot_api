@@ -16,26 +16,37 @@ router.get('/:noresi/:kurir', (req, res, next) => {
             //console.log(result.body);
             var chat = {}
             data = result.body;
-            chat["chats"] = [
-                {
-                    text: data.result.summary.courier_name+"\n"+data.result.summary.waybill_number+
-                    "\n\nShipper : "+data.result.summary.shipper_name+"\nReceiver : "+data.result.summary.receiver_name+
-                    "\nOrigin : "+data.result.summary.origin+"\nDestination : "+data.result.summary.destination+
-                    "\nStatus : "+data.result.summary.status,
+            
+            if(data.success == 0){
+                chat["chats"] = [
+                    {
+                        text: "Kurir tidak ditemukan",
+                        type: "text"
+                    }
+                ];
+            }
+            else{
+                chat["chats"] = [
+                    {
+                        text: data.result.summary.courier_name+"\n"+data.result.summary.waybill_number+
+                        "\n\nShipper : "+data.result.summary.shipper_name+"\nReceiver : "+data.result.summary.receiver_name+
+                        "\nOrigin : "+data.result.summary.origin+"\nDestination : "+data.result.summary.destination+
+                        "\nStatus : "+data.result.summary.status,
+                        type: "text"
+                    }
+                ];
+                chat["chats"].push({
+                    text: "Manifests : ",
                     type: "text"
+                });
+                for(var index in data.result.manifest){
+                    val = data.result.manifest[index];
+                    var content = {}
+                    content["text"] = val.manifest_description+"\n"+val.manifest_date+"\n"+val.manifest_time;
+                    content["type"] = "text";
+                    console.log(content);
+                    chat["chats"].push(content);
                 }
-            ];
-            chat["chats"].push({
-                text: "Manifests : ",
-                type: "text"
-            });
-            for(var index in data.result.manifest){
-                val = data.result.manifest[index];
-                var content = {}
-                content["text"] = val.manifest_description+"\n"+val.manifest_date+"\n"+val.manifest_time;
-                content["type"] = "text";
-                console.log(content);
-                chat["chats"].push(content);
             }
             res.status(200).json(chat);
         };
