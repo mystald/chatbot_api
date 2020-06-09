@@ -12,13 +12,20 @@ request(url,options,(error,res,body) => {
     };
 
     if(!error && res.statusCode == 200){
-        console.log(res.body.result.delivered);
+        console.log(res.body);
+        data = res.body;
     };
 })
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
-        message: 'products get work'
+        message: 'products get work',
+        chats: [
+            {
+                text: data.result.summary,
+                type: "text"
+            }
+        ]
     });
 });
 
