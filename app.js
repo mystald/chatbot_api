@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-const productRoutes = require('./api/routes/products');
+const kurirRoutes = require('./api/routes/kurir');
 const cekresiRoutes = require('./api/routes/cekresi');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use('/products', productRoutes);
+app.use('/kurir', kurirRoutes);
 app.use('/cekresi', cekresiRoutes);
 
 app.use((req,res,next) =>{
