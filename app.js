@@ -3,13 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const productRoutes = require('./api/routes/products');
-const orderRoutes = require('./api/routes/orders');
+const cekresiRoutes = require('./api/routes/cekresi');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/products', productRoutes);
-app.use('/orders', orderRoutes);
+app.use('/cekresi', cekresiRoutes);
 
 app.use((req,res,next) =>{
     const error = new Error('Not Found');
