@@ -4,14 +4,12 @@ const bodyParser = require('body-parser');
 
 const productRoutes = require('./api/routes/products');
 const cekresiRoutes = require('./api/routes/cekresi');
-const kurirRoutes = require('./api/routes/kurir');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/products', productRoutes);
 app.use('/cekresi', cekresiRoutes);
-app.use('/kurir', kurirRoutes);
 
 app.use((req,res,next) =>{
     const error = new Error('Not Found');

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 
-//get dengan parameter noresi dan kurir (slug)
 router.get('/:noresi/:kurir', (req, res, next) => {
     let url = "http://api.shipping.esoftplay.com/waybill/"+req.params.noresi+"/"+req.params.kurir
 
@@ -18,11 +17,10 @@ router.get('/:noresi/:kurir', (req, res, next) => {
             var chat = {}
             data = result.body;
             
-            //jika error (kurir atau no resi tidak ditemukan)
             if(data.success == 0){
                 chat["chats"] = [
                     {
-                        text: data.message,
+                        text: "Kurir tidak ditemukan",
                         type: "text"
                     }
                 ];
@@ -41,8 +39,6 @@ router.get('/:noresi/:kurir', (req, res, next) => {
                     text: "Manifests : ",
                     type: "text"
                 });
-
-                //loop data manifest, push ke array "chats"
                 for(var index in data.result.manifest){
                     val = data.result.manifest[index];
                     var content = {}
@@ -55,7 +51,7 @@ router.get('/:noresi/:kurir', (req, res, next) => {
             res.status(200).json(chat);
         };
     })
-    console.log("Cek resi "+req.params.noresi+" "+req.params.kurir+" "+req.connection.remoteAddress);
+    console.log("Cek resi "+req.params.noresi+" "+req.params.kurir);
 });
 
 module.exports = router;
