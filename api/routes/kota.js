@@ -63,8 +63,22 @@ router.get('/ongkir_origin/:kab_origin', (req,res,next)=>{
 
         res.status(200).json(chat);
     }
+    else if (idKab_origin.length < 1){
+        var chat = {};
+        chat['chats'] = [
+            {
+                text: "Kabupaten/Kota tidak ditemukan",
+                type: "text"
+            },
+            {
+                path: "5edc027620f8374bf65ac3f2",
+                type: "path"
+            }
+        ];
+        res.status(200).json(chat);
+    }
     else{
-        res.status(200).json({
+        var chat = {
             chats: [
                 {
                     variable: {
@@ -78,7 +92,8 @@ router.get('/ongkir_origin/:kab_origin', (req,res,next)=>{
                     type: "path"
                 }
             ]
-        });
+        }
+        res.status(200).json(chat);
     }
     console.log("Cari origin kab/kota cekongkir"+req.params.kab_origin);
 });
@@ -117,6 +132,20 @@ router.get('/ongkir_dest/:kab_dest', (req,res,next)=>{
             type: "button"
         }];
 
+        res.status(200).json(chat);
+    }
+    else if (idKab_dest.length < 1){
+        var chat = {};
+        chat['chats'] = [
+            {
+                text: "Kabupaten/Kota tidak ditemukan",
+                type: "text"
+            },
+            {
+                path: "5edc027620f8374bf65ac3f2",
+                type: "path"
+            }
+        ];
         res.status(200).json(chat);
     }
     else{

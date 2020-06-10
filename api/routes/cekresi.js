@@ -48,7 +48,7 @@ router.get('/:noresi/:kurir', (req, res, next) => {
                     var content = {}
                     content["text"] = val.manifest_description+"\n"+val.manifest_date+"\n"+val.manifest_time;
                     content["type"] = "text";
-                    console.log(content);
+                    //console.log(content);
                     chat["chats"].push(content);
                 }
             }
