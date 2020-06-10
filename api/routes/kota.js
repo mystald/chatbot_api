@@ -4,9 +4,9 @@ const request = require('request');
 
 var postcode = [];
 
-let all_url = "http://api.shipping.esoftplay.com/cities";
-let all_options = { json: "true", method: "GET" };
-request(all_url,all_options,(error,result,body) => {
+let url = "http://api.shipping.esoftplay.com/cities";
+let options = { json: "true", method: "GET" };
+request(url,options,(error,result,body) => {
     if(error){
         console.log(error)
     };
@@ -50,7 +50,8 @@ router.get('/ongkir_origin/:kab_origin', (req,res,next)=>{
             content['type'] = "path";
             content['path'] = "5ee120f820f837185ebedb8b";
             content["variable"] = {
-                idKab_origin: val[0].toString()
+                idKab_origin: val[0].toString(),
+                kab_origin_det: val[4]
             };
             buttonArr.push(content);
         };
@@ -67,7 +68,8 @@ router.get('/ongkir_origin/:kab_origin', (req,res,next)=>{
             chats: [
                 {
                     variable: {
-                        idKab_origin: idKab_origin[0][0]
+                        idKab_origin: idKab_origin[0][0],
+                        kab_origin_det: idKab_origin[0][4]
                     },
                     type: "variable"
                 },
@@ -102,9 +104,10 @@ router.get('/ongkir_dest/:kab_dest', (req,res,next)=>{
             var content = {};
             content['label'] = val[4];
             content['type'] = "path";
-            content['path'] = "5edcd40b20f8374bf65ac6d5";
+            content['path'] = "5ee12d7120f837185ebedbe8";
             content["variable"] = {
-                idKab_dest: val[0].toString()
+                idKab_dest: val[0].toString(),
+                kab_dest_det: val[4]
             };
             buttonArr.push(content);
         };
@@ -121,12 +124,13 @@ router.get('/ongkir_dest/:kab_dest', (req,res,next)=>{
             chats: [
                 {
                     variable: {
-                        idKab_dest: idKab_dest[0][0]
+                        idKab_dest: idKab_dest[0][0],
+                        kab_dest_det: idKab_dest[0][4]
                     },
                     type: "variable"
                 },
                 {
-                    path: "5edcd40b20f8374bf65ac6d5",
+                    path: "5ee12d7120f837185ebedbe8",
                     type: "path"
                 }
             ]

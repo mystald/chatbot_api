@@ -3,10 +3,10 @@ const router = express.Router();
 const request = require('request');
 
 router.get('/cekresi', (req, res, next) => {
-    let all_url = "http://api.shipping.esoftplay.com/couriers";
-    let all_options = { json: "true", method: "GET" };
+    let url = "http://api.shipping.esoftplay.com/couriers";
+    let options = { json: "true", method: "GET" };
 
-    request(all_url,all_options,(error,result,body) => {
+    request(url,options,(error,result,body) => {
         if(error){
             console.log(error)
         };
@@ -42,10 +42,10 @@ router.get('/cekresi', (req, res, next) => {
 
 
 router.get('/cekongkir', (req, res, next) => {
-    let all_url = "http://api.shipping.esoftplay.com/couriers";
-    let all_options = { json: "true", method: "GET" };
+    let url = "http://api.shipping.esoftplay.com/couriers";
+    let options = { json: "true", method: "GET" };
 
-    request(all_url,all_options,(error,result,body) => {
+    request(url,options,(error,result,body) => {
         if(error){
             console.log(error)
         };
@@ -65,9 +65,10 @@ router.get('/cekongkir', (req, res, next) => {
                 var content = {};
                 content["label"] = val.name;
                 content["type"] = "path";
-                content["path"] = "5edceaa520f8374bf65ac755";
+                content["path"] = "5ee13d6620f837185ebedc06";
                 content["variable"] = {
-                    kurir: val.slug
+                    kurir: val.slug,
+                    kurir_det: val.name
                 };
                 //console.log(content);
                 buttonArr.push(content);

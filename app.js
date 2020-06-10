@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use('/kurir', kurirRoutes);
 app.use('/kota', kotaRoutes);
 app.use('/cekresi', cekresiRoutes);
-app.use('/cekongkir', kotaRoutes);
+app.use('/cekongkir', cekongkirRoutes);
 
 app.use((req,res,next) =>{
     const error = new Error('Not Found');

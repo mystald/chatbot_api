@@ -4,7 +4,7 @@ const request = require('request');
 
 //get dengan parameter noresi dan kurir (slug)
 router.get('/:noresi/:kurir', (req, res, next) => {
-    let url = "http://api.shipping.esoftplay.com/waybill/"+req.params.noresi+"/"+req.params.kurir
+    let url = "http://api.shipping.esoftplay.com/waybill/"+req.params.noresi+"/"+req.params.kurir;
 
     let options = { json: "true", method: "GET" };
 
