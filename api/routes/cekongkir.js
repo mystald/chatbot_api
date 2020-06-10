@@ -27,6 +27,22 @@ router.get('/:origin/:dest/:weight/:kurir', (req,res,next)=>{
                 };
                 chat['chats'].push(content);
             };
+            chat['chats'].push({
+                text: "Pilih menu dibawah",
+                buttons:[
+                    {
+                        label: "Coba kurir lain",
+                        type: "path",
+                        path: "5ee12d7120f837185ebedbe8",
+                    },
+                    {
+                        label: "Kembali ke menu utama",
+                        type: "path",
+                        path: "5edc027620f8374bf65ac3f2"
+                    }
+                ],
+                type: "button"
+            });
             res.status(200).json(chat);
         };
     });
