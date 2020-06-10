@@ -50,7 +50,7 @@ router.get('/ongkir_origin/:kab_origin', (req,res,next)=>{
             content['type'] = "path";
             content['path'] = "5ee120f820f837185ebedb8b";
             content["variable"] = {
-                idKab_origin: val[0]
+                idKab_origin: val[0].toString()
             };
             buttonArr.push(content);
         };
@@ -104,7 +104,7 @@ router.get('/ongkir_dest/:kab_dest', (req,res,next)=>{
             content['type'] = "path";
             content['path'] = "5edcd40b20f8374bf65ac6d5";
             content["variable"] = {
-                idKab_dest: val[0]
+                idKab_dest: val[0].toString()
             };
             buttonArr.push(content);
         };
